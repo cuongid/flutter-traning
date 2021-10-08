@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_config/flutter_config.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await FlutterConfig.loadEnvVariables();
   runApp(const MyApp());
 }
 
@@ -9,6 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(FlutterConfig.get("APP_NAME"));
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
